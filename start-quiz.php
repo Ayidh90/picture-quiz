@@ -19,14 +19,14 @@ function getData($link)
 $questions = getData($link);
 
 if (isset($_POST['submit_quiz'])) {
-    $count_correct = 0 ;
-    $count_incorrect = 0 ;
+    $count_correct = 0;
+    $count_incorrect = 0;
     while ($row = mysqli_fetch_array($questions)) {
         $corrects[$row['id']] = $row['correct'];
     }
     foreach ($corrects as $key => $value) {
         $answers[$key] = ($_POST['choice'][$key] == $value) ? "t" : "f";
-        $count_correct = ($answers[$key] == "t") ? ++$count_correct : ++$count_incorrect ;
+        ($answers[$key] == "t") ? $count_correct++ : $count_incorrect++;
         // die(print ($count_correct));
     }
     $questions = getData($link);
@@ -77,11 +77,23 @@ mysqli_close($link);
         <div class="alert alert-info mt-3" role="alert">
             اختر الصورة المناسبة .
         </div>
-        <?php if (isset($count_correct)) { ?>
-            <div class="alert alert-info mt-3" role="alert">
-                عدد الإجابات الصحيحة  = <?php echo $count_correct ?>
+        <div class="row">
+            <div class="col">
+                <?php if (isset($count_correct)) { ?>
+                    <div class="alert alert-success mt-3" role="alert">
+                        عدد الإجابات الصحيحة = <?php echo $count_correct ?>
+                    </div>
+                <?php } ?>
             </div>
-        <?php } ?>
+            <div class="col">
+                <?php if (isset($count_incorrect)) { ?>
+                    <div class="alert alert-danger mt-3" role="alert">
+                        عدد الإجابات الخاطئة = <?php echo $count_incorrect ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $_GET["id"] ?>" method="POST">
             <input type="hidden" name="id_quiz" value="<?php echo $_GET["id"] ?>">
             <?php
@@ -97,12 +109,12 @@ mysqli_close($link);
                                     </div>
                                     <?php if ($answers[$row['id']] == 't') { ?>
                                         <div class="col-md-4 offset-md-4 text-end">
-                                            اجابة صح
+                                           <h4><span class="badge bg-success"> اجابة صح</span></h4>
                                         </div>
                                     <?php } ?>
                                     <?php if ($answers[$row['id']] == 'f') { ?>
                                         <div class="col-md-4 offset-md-4 text-end">
-                                            اجابة خاطئة
+                                            <h4><span class="badge bg-danger">اجابة خاطئة</span></h4>
                                         </div>
                                     <?php } ?>
                                 </div>
