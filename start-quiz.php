@@ -48,14 +48,26 @@ mysqli_close($link);
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #eee
+       body, html {
+        height: 100%;
         }
-    </style>
+
+        .bg {
+        /* The image used */
+        background-image: url("./assets/img/bg4.jpeg");
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+   </style>
 </head>
 
-<body>
-
+<body class="bg">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
             <div class="container-fluid">
