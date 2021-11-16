@@ -106,7 +106,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body {
             height: 100%;
         }
-
+        .bg {
+                background-image: url("./assets/img/bg4.jpeg");
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         body {
             display: flex;
             align-items: center;
@@ -157,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     </style>
 </head>
-<body class="text-center">
+<body class="text-center bg">
     <main class="form-signin">
         <h2>اشتراك</h2>
         <p>يرجى ملء هذا النموذج لإنشاء حساب.</p>

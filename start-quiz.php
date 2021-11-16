@@ -48,23 +48,24 @@ mysqli_close($link);
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <style>
-       body, html {
-        height: 100%;
+        body,
+        html {
+            height: 100%;
         }
 
         .bg {
-        /* The image used */
-        background-image: url("./assets/img/bg4.jpeg");
+            /* The image used */
+            background-image: url("./assets/img/bg4.jpeg");
 
-        /* Full height */
-        height: 100%;
+            /* Full height */
+            height: 100%;
 
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-   </style>
+    </style>
 </head>
 
 <body class="bg">
@@ -82,7 +83,8 @@ mysqli_close($link);
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     </ul>
-                    <a href="./index.php" class="btn btn-outline-secondary">العودة للصفحة الرئيسية</a>
+                    <a href="./index.php" class="btn btn-outline-secondary mx-3">الصفحة الرئيسية</a>
+                    <a href="./quiz.php" class="btn btn-outline-success">الاختبارات </a>
                 </div>
             </div>
         </nav>
@@ -119,14 +121,16 @@ mysqli_close($link);
                                     <div class="col-md-4">
                                         <h4 class="text-gray-dark"><?php echo $row['question'] ?> ؟ </h4>
                                     </div>
-                                    <?php if ($answers[$row['id']] == 't') { ?>
+                                    <?php if (isset($answers)) { ?>
                                         <div class="col-md-4 offset-md-4 text-end">
-                                           <h4><span class="badge bg-success"> اجابة صح</span></h4>
-                                        </div>
-                                    <?php } ?>
-                                    <?php if ($answers[$row['id']] == 'f') { ?>
-                                        <div class="col-md-4 offset-md-4 text-end">
-                                            <h4><span class="badge bg-danger">اجابة خاطئة</span></h4>
+                                            <h4><span class="badge bg-success"> الاجابة الصحيحة رقم <?php echo $row['correct'] ?></span></h4>
+                                        
+                                        <?php if ($answers[$row['id']] == 't') { ?>
+                                                <h4><span class="badge bg-success"> اجابة صح</span></h4>
+                                        <?php } ?>
+                                        <?php if ($answers[$row['id']] == 'f') { ?>
+                                                <h4><span class="badge bg-danger">اجابة خاطئة</span></h4>
+                                        <?php } ?>
                                         </div>
                                     <?php } ?>
                                 </div>

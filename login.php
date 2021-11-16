@@ -109,6 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #f5f5f5;
         }
 
+        .bg {
+                background-image: url("./assets/img/bg4.jpeg");
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         .form-signin {
             width: 100%;
             max-width: 330px;
@@ -152,36 +159,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 
 </head>
-<body class="text-center">
-<div class="container-fluid">
-    <main class="form-signin">
-        <h2>تسجيل الدخول</h2>
-        <p>يرجى ملء البيانات الخاصة بك لتسجيل الدخول.</p>
 
-        <?php
-        if (!empty($login_err)) {
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }
-        ?>
+<body class="text-center bg">
+    <div class="container-fluid">
+        <main class="form-signin">
+            <h2>تسجيل الدخول</h2>
+            <p>يرجى ملء البيانات الخاصة بك لتسجيل الدخول.</p>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>اسم المستخدم</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>كلمة المرور </label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary mt-3" value="دخول">
-            </div>
-            <p>ليس لديك حساب؟ <a href="register.php">أفتح حساب الأن</a>.</p>
-        </form>
-    </main>
-</div>
+            <?php
+            if (!empty($login_err)) {
+                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+            }
+            ?>
+
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور </label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary mt-3" value="دخول">
+                </div>
+                <p>ليس لديك حساب؟ <a href="register.php">أفتح حساب الأن</a>.</p>
+            </form>
+        </main>
+    </div>
 </body>
 
 </html>

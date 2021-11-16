@@ -52,7 +52,8 @@ $quizzes = mysqli_query($link, $sql);
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             
           </ul>
-            <a href="./index.php" class="btn btn-warning">العودة للصفحة الرئيسية</a>
+            <a href="./index.php" class="btn btn-warning mx-3">الصفحة الرئيسية</a>
+            <a href="./login.php" class="btn btn-warning">تسجيل الدخول</a>
         </div>
       </div>
     </nav>
